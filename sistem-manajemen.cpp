@@ -34,7 +34,7 @@ void inputBuku(struct Buku *buku, int *jumlahBuku) {
 
     while (!valid) {
         printf("Nama Buku: ");
-        scanf(" %99[^\n]", buku[*jumlahBuku].nama);
+        scanf(" %99[^\n]", buku[*jumlahBuku].nama); // karena nama buku menerima jumlah inputan 100, maka digunakan 99 ditambah dengan karakter newline
 
         if (strlen(buku[*jumlahBuku].nama) == 0) {
             printf("\033[1;31mNama buku harus diisi.\033[0m\n");
@@ -47,7 +47,7 @@ void inputBuku(struct Buku *buku, int *jumlahBuku) {
 
     while (!valid) {
         printf("Jenis Buku: ");
-        scanf(" %s", buku[*jumlahBuku].jenis);
+        scanf(" %49[^\n]", buku[*jumlahBuku].jenis);// karena nama buku menerima jumlah inputan 50, maka digunakan 49 ditambah dengan karakter newline
 
         int is_valid = 1;
         for (int i = 0; buku[*jumlahBuku].jenis[i] != '\0'; i++) {
@@ -71,8 +71,8 @@ void inputBuku(struct Buku *buku, int *jumlahBuku) {
         float harga;
         scanf("%f", &harga);
 
-        if (harga <= 30000) {
-            printf("\033[1;31mHarga buku harus berupa angka di atas 30000.\033[0m\n");
+        if (harga < 30000) {
+            printf("\033[1;31mHarga buku harus setidaknya Rp.30000.\033[0m\n");
         } else {
             buku[*jumlahBuku].harga = harga;
             (*jumlahBuku)++;
