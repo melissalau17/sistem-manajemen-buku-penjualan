@@ -3,7 +3,7 @@
 #include <string.h>
 
 struct Buku {
-    char kode[11];   // Untuk kode buku, 10 karakter + null terminator
+    char kode[14];   // ISBN terdiri dari 13 digit, termasuk 1 null terminator
     char nama[100];
     char jenis[50];
     float harga;
@@ -20,11 +20,11 @@ void inputBuku(struct Buku *buku, int *jumlahBuku) {
     int valid = 0;  // Variable untuk melacak apakah input valid
 
     while (!valid) {  // Loop sampai input valid
-        printf("Kode Buku (10 angka): ");
+        printf("Kode Buku: ");
         scanf("%s", buku[*jumlahBuku].kode);
 
-        if (strlen(buku[*jumlahBuku].kode) != 10) {
-            printf("\033[1;31mKode buku harus terdiri dari 10 angka.\033[0m\n");
+        if (strlen(buku[*jumlahBuku].kode) != 13) {
+            printf("\033[1;31mKode buku harus terdiri dari 13 angka.\033[0m\n");
         } else {
             valid = 1;  // Input valid, keluar dari loop
         }
@@ -67,12 +67,12 @@ void inputBuku(struct Buku *buku, int *jumlahBuku) {
     valid = 0;  // Reset validasi untuk pertanyaan berikutnya
 
     while (!valid) {
-        printf("Harga Buku (di atas 10000): ");
+        printf("Harga Buku (di atas 30000): "); // harga buku termurah biasanya 30000
         float harga;
         scanf("%f", &harga);
 
-        if (harga <= 10000) {
-            printf("\033[1;31mHarga buku harus berupa angka di atas 10000.\033[0m\n");
+        if (harga <= 30000) {
+            printf("\033[1;31mHarga buku harus berupa angka di atas 30000.\033[0m\n");
         } else {
             buku[*jumlahBuku].harga = harga;
             (*jumlahBuku)++;
