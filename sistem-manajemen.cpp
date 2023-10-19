@@ -15,7 +15,7 @@ struct Transaksi {
     float totalHarga;
 };
 
-// Fungsi untuk menambah data buku dengan validasi
+// fungsi untuk menambah data buku dengan validasi
 void inputBuku(struct Buku *buku, int *jumlahBuku) {
     int valid = 0;  // Variable untuk melacak apakah input valid
 
@@ -30,7 +30,7 @@ void inputBuku(struct Buku *buku, int *jumlahBuku) {
         }
     }
 
-    valid = 0;  // Reset validasi untuk pertanyaan berikutnya
+    valid = 0;  // reset validasi untuk pertanyaan berikutnya
 
     while (!valid) {
         printf("Nama Buku: ");
@@ -43,7 +43,7 @@ void inputBuku(struct Buku *buku, int *jumlahBuku) {
         }
     }
 
-    valid = 0;  // Reset validasi untuk pertanyaan berikutnya
+    valid = 0;  // reset validasi untuk pertanyaan berikutnya
 
     while (!valid) {
         printf("Jenis Buku: ");
@@ -64,7 +64,7 @@ void inputBuku(struct Buku *buku, int *jumlahBuku) {
         }
     }
 
-    valid = 0;  // Reset validasi untuk pertanyaan berikutnya
+    valid = 0;  // reset validasi untuk pertanyaan berikutnya
 
     while (!valid) {
         printf("Harga Buku: "); // harga buku termurah biasanya 30000
@@ -82,7 +82,7 @@ void inputBuku(struct Buku *buku, int *jumlahBuku) {
     }
 }
 
-// Fungsi untuk menambahkan riwayat penjualan
+// fungsi untuk menambahkan riwayat penjualan
 void addTransaksi(struct Transaksi *transaksi, struct Buku *buku, int *jumlahTransaksi, int *jumlahBuku) {
     if (*jumlahBuku == 0) {
         printf("\033[1;31mBelum ada data buku. Tidak dapat melakukan penjualan.\033[0m\n");
@@ -104,7 +104,7 @@ void addTransaksi(struct Transaksi *transaksi, struct Buku *buku, int *jumlahTra
         return;
     }
 
-    // Salin data buku ke transaksi
+    // salin data buku ke transaksi
     transaksiBaru.buku = buku[indeksBuku - 1];
 
     printf("Jumlah yang dijual: ");
@@ -115,7 +115,7 @@ void addTransaksi(struct Transaksi *transaksi, struct Buku *buku, int *jumlahTra
         return;
     }
 
-    // Hitung total harga
+    // hitung total harga
     transaksiBaru.totalHarga = transaksiBaru.jumlah * transaksiBaru.buku.harga;
 
     transaksi[*jumlahTransaksi] = transaksiBaru;
@@ -123,7 +123,7 @@ void addTransaksi(struct Transaksi *transaksi, struct Buku *buku, int *jumlahTra
     printf("\033[1;32mTransaksi berhasil ditambahkan.\033[0m\n");
 }
 
-// Fungsi untuk menampilkan data buku
+// fungsi untuk menampilkan data buku
 void viewBuku(struct Buku *buku, int jumlahBuku) {
     if (jumlahBuku == 0) {
         printf("\033[1;31mBelum ada data buku.\033[0m\n");
@@ -139,7 +139,7 @@ void viewBuku(struct Buku *buku, int jumlahBuku) {
     }
 }
 
-// Fungsi untuk menampilkan riwayat penjualan
+// fungsi untuk menampilkan riwayat penjualan
 void viewHistory(struct Transaksi *transaksi, int jumlahTransaksi) {
     if (jumlahTransaksi == 0) {
         printf("\033[1;31mBelum ada riwayat penjualan.\033[0m\n");
@@ -155,7 +155,7 @@ void viewHistory(struct Transaksi *transaksi, int jumlahTransaksi) {
     }
 }
 
-// Fungsi untuk menghapus riwayat penjualan
+// fungsi untuk menghapus riwayat penjualan
 void deleteHistory(struct Transaksi *transaksi, int *jumlahTransaksi) {
     if (*jumlahTransaksi == 0) {
         printf("\033[1;31mTidak ada riwayat penjualan yang dapat dihapus.\033[0m\n");
@@ -180,7 +180,7 @@ void deleteHistory(struct Transaksi *transaksi, int *jumlahTransaksi) {
     }
 }
 
-// Fungsi untuk menghapus data buku
+// fungsi untuk menghapus data buku
 void deleteBuku(struct Buku *buku, int *jumlahBuku) {
      if (*jumlahBuku == 0) {
         printf("\033[1;31mTidak ada data buku yang dapat dihapus.\033[0m\n");
@@ -245,11 +245,10 @@ int main() {
                 deleteBuku(buku, &jumlahBuku);
                 break;
             case 7:
-	            // Tambahkan kode untuk menyimpan data buku ke dalam file
 	            FILE *file = fopen("databuku.txt", "w");
 	            if (file == NULL) {
 	                printf("Gagal membuka file databuku.txt\n");
-	                exit(1); // Anda dapat menambahkan penanganan kesalahan lainnya sesuai kebutuhan
+	                exit(1); 
 	            }
 	        
 	            for (int i = 0; i < jumlahBuku; i++) {
@@ -259,7 +258,7 @@ int main() {
 	            fclose(file);
 	        
 	            printf("Data berhasil disimpan. Program selesai.\n");
-	            exit(0); // Keluar dari program
+	            exit(0); // keluar dari program
 	            break;
             default:
                 printf("Pilihan tidak valid. Coba lagi.\n");
