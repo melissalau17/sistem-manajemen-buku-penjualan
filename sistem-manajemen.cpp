@@ -17,16 +17,16 @@ struct Transaksi {
 
 // fungsi untuk menambah data buku dengan validasi
 void inputBuku(struct Buku *buku, int *jumlahBuku) {
-    int valid = 0;  // Variable untuk melacak apakah input valid
+    int valid = 0;  // variable untuk melacak apakah input valid
 
-    while (!valid) {  // Loop sampai input valid
+    while (!valid) {  // loop sampai input valid
         printf("Kode Buku: ");
         scanf("%s", buku[*jumlahBuku].kode);
 
         if (strlen(buku[*jumlahBuku].kode) != 13) {
             printf("\033[1;31mKode buku harus terdiri dari 13 angka.\033[0m\n");
         } else {
-            valid = 1;  // Input valid, keluar dari loop
+            valid = 1;  // input valid, keluar dari loop
         }
     }
 
