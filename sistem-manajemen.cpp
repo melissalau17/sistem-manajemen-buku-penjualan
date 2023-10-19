@@ -67,7 +67,7 @@ void inputBuku(struct Buku *buku, int *jumlahBuku) {
     valid = 0;  // Reset validasi untuk pertanyaan berikutnya
 
     while (!valid) {
-        printf("Harga Buku (di atas 30000): "); // harga buku termurah biasanya 30000
+        printf("Harga Buku: "); // harga buku termurah biasanya 30000
         float harga;
         scanf("%f", &harga);
 
